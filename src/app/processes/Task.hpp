@@ -17,6 +17,7 @@ struct Task {
 	Action action;
 
 	Task(std::fstream&& stream, Action act, std::string filePath) : f_stream(std::move(stream)), action(act), filePath(filePath) { }
+	
 	// serialize: converting an object's data into a byte stream for storage or transmission
 	std::string toString() {
 		std::ostringstream oss;
