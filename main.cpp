@@ -39,8 +39,8 @@ int main(int argc, char* argv[]) {
 			std::cout << "Invalid directory path: " << std::endl;
 		}
 	}
-	catch (const std::exception& e) {
-		std::cerr << e.what() << '\n';
+	catch (const fs::filesystem_error& e) {
+		std::cout << "Filesystem error: " << e.what() << '\n';
 	}
 	return 0;
 }

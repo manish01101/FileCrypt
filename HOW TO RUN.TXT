@@ -1,0 +1,7 @@
+
+BUILD OBJECT FILE
+-> USING ALL CORE
+  make -j$(sysctl -n hw.ncpu)      
+
+./cryption test/test1.txt,ENCRYPT
+./cryption test/test1.txt,DECRYPT
