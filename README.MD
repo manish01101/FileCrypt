@@ -7,22 +7,26 @@ This tool encrypts and decrypts text files using a simple shift cipher mechanism
 ---
 
 ## 1. Build Instructions
-  ## Makefile Details
-  The Makefile has been structured to support macOS (ARM64 & Intel), Linux, and Windows. Update the given makefile variables and compiler flags based on the type of OS.
 
-  **For macOS (Apple Silicon ARM64):**
-  ```makefile
-  CXX = g++
-  CXXFLAGS = -std=c++17 -g -Wall -arch arm64 -I. -Isrc/app/encryptDecrypt -Isrc/app/fileHandling -Isrc/app/processes
-  ```
+## Makefile Details
 
-  **For Linux & Windows (WSL/Git Bash):**
-  ```makefile
-  CXX = g++
-  CXXFLAGS = -std=c++17 -g -Wall -I. -Isrc/app/encryptDecrypt -Isrc/app/fileHandling -Isrc/app/processes
-  ```
+The Makefile has been structured to support macOS (ARM64 & Intel), Linux, and Windows. Update the given makefile variables and compiler flags based on the type of OS.
 
-  All compiled object files are stored in the `build/` directory for better organization.
+**For macOS (Apple Silicon ARM64):**
+
+```makefile
+CXX = g++
+CXXFLAGS = -std=c++17 -g -Wall -arch arm64 -I. -Isrc/app/encryptDecrypt -Isrc/app/fileHandling -Isrc/app/processes
+```
+
+**For Linux & Windows (WSL/Git Bash):**
+
+```makefile
+CXX = g++
+CXXFLAGS = -std=c++17 -g -Wall -I. -Isrc/app/encryptDecrypt -Isrc/app/fileHandling -Isrc/app/processes
+```
+
+All compiled object files are stored in the `build/` directory for better organization.
 
 ### **Building the Project**
 
@@ -32,8 +36,6 @@ This tool encrypts and decrypts text files using a simple shift cipher mechanism
 make
 ```
 
-<span style="display:inline-block;background:#f4f4f4;padding:5px;border-radius:5px;cursor:pointer;" onclick="navigator.clipboard.writeText('make')">📋 Copy</span>
-
 #### **Using All CPU Cores (Faster Build on All OS)**
 
 For **macOS (ARM64 & Intel):**
@@ -42,15 +44,11 @@ For **macOS (ARM64 & Intel):**
 make -j$(sysctl -n hw.ncpu)
 ```
 
-<span style="display:inline-block;background:#f4f4f4;padding:5px;border-radius:5px;cursor:pointer;" onclick="navigator.clipboard.writeText('make -j$(sysctl -n hw.ncpu)')">📋 Copy</span>
-
 For **Linux:**
 
 ```sh
 make -j$(nproc)
 ```
-
-<span style="display:inline-block;background:#f4f4f4;padding:5px;border-radius:5px;cursor:pointer;" onclick="navigator.clipboard.writeText('make -j$(nproc)')">📋 Copy</span>
 
 For **Windows (Using Git Bash or WSL):**
 
@@ -58,11 +56,9 @@ For **Windows (Using Git Bash or WSL):**
 make -j$(nproc)
 ```
 
-<span style="display:inline-block;background:#f4f4f4;padding:5px;border-radius:5px;cursor:pointer;" onclick="navigator.clipboard.writeText('make -j$(nproc)')">📋 Copy</span>
-
 This will compile the project using all available CPU cores for faster execution.
 
-___
+---
 
 ## 2. Usage
 
@@ -162,4 +158,3 @@ project-root/
 - **Make sure to decrypt files before modifying them**, as encrypted files may become unreadable.
 
 🚀 **Happy Coding!**
-
