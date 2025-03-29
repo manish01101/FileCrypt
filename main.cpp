@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
 	std::cout << "Enter the directory path: " << std::endl;
 	std::getline(std::cin, directory);
 
-	std::cout << "Enter the action (encrypt/decrypt): " << std::endl;
+	std::cout << "Enter the action (1: for encrypt/ 2: for decrypt): " << std::endl;
 	std::getline(std::cin, choosedAction);
 
 	try {
@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
 					IO io(filePath);
 					std::fstream f_stream = std::move(io.getFileStream());
 					if (f_stream.is_open()) {
-						Action taskAction = (choosedAction == "ENCRYPT" ? Action::ENCRYPT : Action::DECRYPT);
+						Action taskAction = ((choosedAction == "ENCRYPT" or choosedAction == "encrypt" or choosedAction == "1") ? Action::ENCRYPT : Action::DECRYPT);
 						auto task = std::make_unique<Task>(std::move(f_stream), taskAction, filePath);
 						processManagement.submitToQueue(std::move(task));
 					}
