@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
 					}
 				}
 			}
-			processManagement.executeTasks();
+			// processManagement.executeTasks();
 		}
 		else {
 			std::cout << "Invalid directory path: " << std::endl;
