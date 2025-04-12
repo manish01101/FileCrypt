@@ -58,6 +58,11 @@ make -j$(nproc)
 
 This will compile the project using all available CPU cores for faster execution.
 
+
+### **delete the build files**
+```
+make clean
+```
 ---
 
 ## 2. Usage
