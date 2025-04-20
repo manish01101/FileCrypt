@@ -8,6 +8,7 @@
 #include <atomic>
 #include <sys/fcntl.h>
 #include <semaphore.h>
+#include <thread>
 
 ProcessManagement::ProcessManagement() {
 	itemsSemaphore = sem_open("/items_semaphore", O_CREAT, 0666, 0);
@@ -73,22 +74,27 @@ bool ProcessManagement::submitToQueue(std::unique_ptr<Task> task) {
 	lock.unlock();
 	sem_post(itemsSemaphore);
 
-	int pid = fork();
-	if (pid < 0) {
-		return false;
-	}
-	else if (pid > 0) {
-		std::cout << "Parent: waiting for child " << pid << std::endl;
-		int status;
-		waitpid(pid, &status, 0); //ensure waitpid() is called in the parent to wait for child to complete.
-	}
+	// FOR MULTIPROCESSING
+	// int pid = fork();
+	// if (pid < 0) {
+	// 	return false;
+	// }
+	// else if (pid > 0) {
+	// 	std::cout << "Parent: waiting for child " << pid << std::endl;
+	// 	int status;
+	// 	waitpid(pid, &status, 0); //ensure waitpid() is called in the parent to wait for child to complete.
+	// }
+	// else {
+	// 	std::cout << "Entering the child process" << std::endl;
+	// 	executeTasks();
+	// 	std::cout << "Exiting the child process" << std::endl;
+	// 	exit(0);
+	// }
 
-	else {
-		std::cout << "Entering the child process" << std::endl;
-		executeTasks();
-		std::cout << "Exiting the child process" << std::endl;
-		exit(0);
-	}
+	// FOR MULTITHREADING
+	std::thread thread_1(&ProcessManagement::executeTasks, this);
+	thread_1.detach();
+
 	return true;
 }
 
